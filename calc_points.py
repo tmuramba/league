@@ -1,3 +1,6 @@
+from operator import concat
+
+
 league_table = []
 teams = []
 
@@ -66,23 +69,26 @@ def sort_table():
 def clean_data(games_played):
     games = games_played.split(",")
     striped = list(map(str.strip, games))
-    first = striped[0]
-    second = striped[1]
-    i = int(first[-1])
-    j = int(second[-1])
-    first = first.rstrip(first[-1])
-    second = second.rstrip(second[-1])
+    first_team_score = striped[0].split(" ")
+    second_team_score = striped[1].split(" ")
+    first = ""
+    second = ""
+
+    for i in range(len(first_team_score) - 1):
+        first = first + ' ' + first_team_score[i]
+
+    for i in range(len(second_team_score) - 1):
+        second = second + ' ' + second_team_score[i]
+
+    i = int(first_team_score[(len(first_team_score) - 1)].strip())
+    j = int(second_team_score[(len(second_team_score) - 1)].strip())
+    first = first.strip()
+    second = second.strip()
     if i > j:
-        first = first.strip()
-        second = second.strip()
         win(first, second)
     elif j > i:
-        first = first.strip()
-        second = second.strip()
         win(second, first)
     else:
-        first = first.strip()
-        second = second.strip()
         draw(first, second)
 
 
