@@ -70,7 +70,7 @@ def sort_table():
             m += 1
 
 
-def scorr(games_played):
+def score(games_played):
     for match in games_played:
         games = match.split(",")
         striped = list(map(str.strip, games))
