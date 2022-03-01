@@ -1,6 +1,3 @@
-from operator import concat
-
-
 league_table = []
 teams = []
 
