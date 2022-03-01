@@ -4,7 +4,7 @@ from pathlib import Path
 def typed_data():
     games = []
     while True:
-        stdin_data = input('>').lower()
+        stdin_data = input('>')
         if stdin_data == "done":
             break
         games.append(stdin_data)

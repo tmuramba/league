@@ -63,27 +63,33 @@ def sort_table():
             m += 1
 
 
-def score(games_played):
-    for match in games_played:
-        games = match.split(",")
-        striped = list(map(str.strip, games))
-        first = striped[0]
-        second = striped[1]
-        i = int(first[-1])
-        j = int(second[-1])
-        first = first.rstrip(first[-1])
-        second = second.rstrip(second[-1])
-        if i > j:
-            first = first.strip()
-            second = second.strip()
-            win(first, second)
-        elif j > i:
-            first = first.strip()
-            second = second.strip()
-            win(second, first)
-        else:
-            first = first.strip()
-            second = second.strip()
-            draw(first, second)
-    sort_table()
+def clean_data(games_played):
+    games = games_played.split(",")
+    striped = list(map(str.strip, games))
+    first = striped[0]
+    second = striped[1]
+    i = int(first[-1])
+    j = int(second[-1])
+    first = first.rstrip(first[-1])
+    second = second.rstrip(second[-1])
+    if i > j:
+        first = first.strip()
+        second = second.strip()
+        win(first, second)
+    elif j > i:
+        first = first.strip()
+        second = second.strip()
+        win(second, first)
+    else:
+        first = first.strip()
+        second = second.strip()
+        draw(first, second)
 
+
+def score(games_played):
+    if len(games_played) < 1:
+        clean_data(games_played)
+    else:
+        for match in games_played:
+            clean_data(match)
+    sort_table()
