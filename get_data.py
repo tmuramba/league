@@ -5,14 +5,14 @@ def typed_data():
     games = []
     while True:
         stdin_data = input('>')
-        if stdin_data == "done":
+        if stdin_data.lower() == "done":
             break
         games.append(stdin_data)
     return games
 
 
 def file_data():
-    position = input('Is file in current directory: Y/N ').lower()
+    position = input('Is file in current directory: Y/N? ').lower()
     if position == 'y':
         name = input('Please enter file name ')
         if Path(name).exists():
@@ -28,5 +28,5 @@ def file_data():
             print('Please enter correct file path')
             return file_data()
     else:
-        print('Please enter Y/N')
+        print('Please enter (Y/N)')
         return file_data()
