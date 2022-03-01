@@ -2,46 +2,39 @@ league_table = []
 teams = []
 
 
-def win(first_team, second_team):
-    if not any(first_team in sublist for sublist in league_table):
-        data = []
-        data = [first_team, 3]
+def win(winner, looser):
+    if not any(winner in sublist for sublist in league_table):
+        data = [winner, 3]
         league_table.append(data)
     else:
         for i, x in enumerate(league_table):
-            if first_team in x:
-                position = (i, x.index(first_team))
+            if winner in x:
                 pts = league_table[i][1]
                 pts += 3
                 league_table[i][1] = pts
 
-    if not any(second_team in sublist for sublist in league_table):
-        data = []
-        data = [second_team, 0]
+    if not any(looser in sublist for sublist in league_table):
+        data = [looser, 0]
         league_table.append(data)
 
 
 def draw(first_team, second_team):
     if not any(first_team in sublist for sublist in league_table):
-        data = []
         data = [first_team, 1]
         league_table.append(data)
     else:
         for i, x in enumerate(league_table):
             if first_team in x:
-                position = (i, x.index(first_team))
                 pts = league_table[i][1]
                 pts += 1
                 league_table[i][1] = pts
 
     if not any(second_team in sublist for sublist in league_table):
-        data = []
         data = [second_team, 1]
         league_table.append(data)
     else:
         for i, x in enumerate(league_table):
             if second_team in x:
-                position = (i, x.index(second_team))
                 pts = league_table[i][1]
                 pts += 1
                 league_table[i][1] = pts
@@ -87,7 +80,7 @@ def score(games_played):
         elif j > i:
             first = first.strip()
             second = second.strip()
-            win(second, second)
+            win(second, first)
         else:
             first = first.strip()
             second = second.strip()

@@ -7,7 +7,7 @@ Would you like to use stdin(S) or files(F)
 """).lower()
 while True:
     if method_of_input == "s":
-        print('Please enter data, enter Done when finished')
+        print('Please enter data, enter DONE when finished')
         games = get_data.typed_data()
         calc_points.score(games)
         break
