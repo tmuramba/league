@@ -47,6 +47,29 @@ def draw(first_team, second_team):
                 league_table[i][1] = pts
 
 
+def sort_table():
+    league_table.sort(key=lambda row: (-row[1], row[0]))
+    m = 1
+    check = 0
+    repeat = 0
+    for item in league_table:
+        if m == 1:
+            print(f'{m}. {item[0]}, {item[1]} pts')
+            check = item[1]
+            m += 1
+        elif item[1] == check:
+            repeat += 1
+            l = m - repeat
+            print(f'{l}. {item[0]}, {item[1]} pts')
+            check = item[1]
+            m += 1
+        else:
+            print(f'{m}. {item[0]}, {item[1]} pts')
+            check = item[1]
+            repeat = 0
+            m += 1
+
+
 def scorr(games_played):
     for match in games_played:
         games = match.split(",")
@@ -69,9 +92,5 @@ def scorr(games_played):
             first = first.strip()
             second = second.strip()
             draw(first, second)
-    league_table.sort(key=lambda row: (-row[1], row[0]))
-    m = 1
-    k = 1
-    for item in league_table:
-        print(f'{m}. {item[0]}, {item[1]} pts')
-        m += 1
+    sort_table()
+
