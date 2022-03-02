@@ -3,7 +3,7 @@ import calc_points
 
 method_of_input = input("""
 Hello
-Would you like to use stdin(S) or files(F)?
+Would you like to use stdin(S) or read a file(F)?
 """).lower()
 
 def run(method_of_input):
