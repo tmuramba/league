@@ -18,6 +18,7 @@ def run(method_of_input):
         print('Please enter (S) for stdin or (F) for files')
         method_of_input = input('>')
 
+
 while True:
     run(method_of_input)
     again = input('Would you like to run again? (Y/N)')
